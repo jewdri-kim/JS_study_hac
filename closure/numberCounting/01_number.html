@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Number Counting</title>
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<style type="text/css">
+section.content{border:1px solid #000;}
+</style>
+<script type="text/javascript"  src="js/jquery-1.11.0.min.js"> </script>
+<script type="text/javascript"  src="js/numberCounting.js"> </script>
+<script>
+$(document).ready(function(){
+	/*
+		//옵션설명 
+		{
+			counting: 3000,     //최종적으로 보여야할 숫자값
+            terms: 100,			// 시작숫자와 마지막숫자 차이값
+			countingTime: 1	// 카운팅 시간(setTimeout기준 1000 = 1초 ) 
+        }
+	*/
+	$('.number1').numberCounting({counting: 3000,terms: 100,countingTime: 1});
+	$('.number2').numberCounting();
+});
+</script>
+</head>
+
+<body>
+<div class="wrap">
+    
+	<div class="number_area number1">100000</div>
+	<div class="number_area number2">200000</div>
+</div>
+</body>
+
+</html>

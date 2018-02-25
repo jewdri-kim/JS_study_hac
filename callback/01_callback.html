@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>별점</title>
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<style type="text/css">
+.filter_list li{width:140px;}
+.filter_list li a{display:block;position:relative;height:140px;}
+.filter_list li.active a:after{display:block;content:'';position:absolute;top:0;left:0;width:100%;height:100%;border:2px solid #f00;}
+</style>
+<script type="text/javascript"  src="js/jquery-1.11.0.min.js"> </script>
+<script>
+$(document).ready(function(){
+	
+	var on_class = 'active';
+
+	$('.layout_list ul, .templete_list ul, .filter_list ul li a').click(function(e){
+		e.preventDefault();
+
+		var idx = $(this).parent().index();
+		var list = $(this).closest('ul');
+		var is_layout = $(this).closest('ul').parent().hasClass('layout_list');
+		if(is_layout){
+			$('.templete_list ul li').removeClass(on_class);
+			$('#templete_list .sel_templete li').removeClass(on_class);
+		}
+		list.find('li').removeClass(on_class);
+		list.find('li').eq(idx).addClass(on_class);
+	});
+
+});
+</script>
+</head>
+
+<body>
+<div id="wrap">
+	<div class="filter_list">
+		<ul>
+			<li><a href="#"><img src="img/img_filter_01.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/img_filter_02.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/img_filter_03.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/img_filter_04.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/img_filter_05.jpg" alt=""></a></li>
+		</ul>
+	</div>
+
+</div>
+</body>
+
+</html>
