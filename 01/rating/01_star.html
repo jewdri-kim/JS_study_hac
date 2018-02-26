@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>별점</title>
+<link rel="stylesheet" type="text/css" href="css/common.css">
+<style type="text/css">
+#wrap{padding:0 20px}
+section{margin:50px;}
+/* Star */
+.star_rating, .star_rating span{overflow:hidden;display:inline-block;width:63px;height:12px;background:transparent url(img/spr_star.png) no-repeat 0 0;cursor:pointer}
+.star_rating span{text-indent:-9999px;background-position:0 0}
+.star_rating_view, .star_rating_view span{width:63px;height:15px;background-position:0 0}
+.star_rating_view span{background-position:0 -17px}
+.star_rating_mv, .star_rating_mv span{width:145px;height:24px;background-position:0 -87px}
+.star_rating_mv span{background-position:0 -119px}
+.star_rating_mv+dl{margin-top:20px}
+</style>
+<script type="text/javascript"  src="js/jquery-1.11.0.min.js"> </script>
+<script>
+$(document).ready(function(){
+
+	var selRacting = 5;		//선택한 별점갖고있는 변수 :  현재 default: 5점  - 개발자가 저장할때 이 값을 저장하면됨.
+
+	//별점(s)
+	$('.star_rating_mv').on('mousemove', function(e) {
+		setStartScore($(this), e);
+	}).on('mouseleave', function(e) {
+		var rating = selRacting; 
+		$(this).find('span').css('width', rating * 20 + '%');
+	}).on('click', function(e) {
+		var rating = setStartScore($(this), e);
+		$(this).find('span').html(rating + '점');
+		selRacting = rating;
+	});
+
+	function setStartScore(thisArea, event) {
+		var startPoint = $(thisArea).offset().left;
+		var result = ((event.pageX - startPoint) * 100 ) / 145;	// 145 별사이즈가로사이즈 (바꿔줘야)
+		var rating = 0;
+
+		if (result < 20) {
+			rating = 1;
+		} else if (result < 40) {
+			rating = 2;
+		} else if (result < 60) {
+			rating = 3;
+		} else if (result < 80) {
+			rating = 4;
+		} else {
+			rating = 5;
+		}
+
+		$(thisArea).find('span').css('width', rating * 20 + '%');
+		return rating;
+	}
+	
+	//별점(e)
+});
+</script>
+</head>
+
+<body>
+<div id="wrap">
+	
+	<h1>PC용</h1>
+
+	<section>
+		<h2>그냥 보이기용</h2>
+		<span class="star_rating star_rating_view"> <!-- 클래스 : star_rating_view -->
+			<span style="width: 40%;" class="score">2점</span>
+		 </span>
+
+
+		<h2>별점주기용</h2>
+		<span class="star_rating star_rating_mv"> <!-- 클래스 : star_rating_mv -->
+			<span style="width: 0%;" class="score">0점</span>
+		 </span>
+		 <dl>
+			<dt>현재</dt>
+			<dd>아무것도 클릭안하고 마우스아웃시, 5점 default.</dd>
+			<dd>별점 클릭후(5점클릭), 마우스 움직이다가 2점에서 마우스아웃해도 5점(클릭한 값 유지)</dd>
+		 </dl>
+	</section>
+
+</div>
+</body>
+
+</html>
