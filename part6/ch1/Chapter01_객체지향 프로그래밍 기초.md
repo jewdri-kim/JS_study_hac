@@ -351,3 +351,5 @@ https://github.com/jewdri-kim/OOAD/blob/master/99_java/5%EC%9E%A5%20%EA%B0%9D%EC
 
 OOAD 예시로 보기
 
+https://github.com/jewdri-kim/OOAD/blob/master/01_1/1-1%20%EC%9E%98%20%EC%84%A4%EA%B3%84%EB%90%9C%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%EC%9D%B4%20%EC%84%B8%EC%83%81%EC%9D%84%20%EB%92%A4%ED%9D%94%EB%93%A0%EB%8B%A4.md
+
